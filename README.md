@@ -52,7 +52,7 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 
 - Create new folder `Views/Departments` (PLURAL)
 - Create view 
-  - Right button Views/Departments > `Add` > `View`
+  - Right button `Views/Departments` > `Add` > `View`
   - View name: Index
   - Template: List
   - Model class: Department
