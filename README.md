@@ -39,3 +39,26 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 - **IActionResult** return types:
 
   ![image](https://user-images.githubusercontent.com/86172286/205783054-b25c2023-8088-4fc0-b4e8-cfa4ab606c52.png)
+
+## First Model-Controller-View - Department
+
+- Create new folder `ViewModels` e move `ErrorViewModel` (including namespace)
+  - CTRL+SHIFT+B to fix references
+- Create class `Models/Department`
+- Create controller
+  - Right button `Controllers` > `Add` > `Controller` > `MVC Controller Empty`
+    - Name: `DepartmentsController` (PLURAL)
+    - Instantiate a List<Department> and return it as View method parameter
+
+- Create new folder `Views/Departments` (PLURAL)
+- Create view 
+  - Right button Views/Departments > `Add` > `View`
+  - View name: Index
+  - Template: List
+  - Model class: Department
+  - Change Title to Departments
+  - Notice:
+    - @model definition
+    - intellisense for model
+    - Helper methods
+    - @foreach block
