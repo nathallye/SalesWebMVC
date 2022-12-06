@@ -27,3 +27,15 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 - **Shared:** views used for more than one controller;
 - **appsettings.json:** external resources configuration (logging, connection strings, etc.);
 - **Program.cs:** entry point and app configuration.
+
+## Controller and Razor pages tests
+
+- **Route pattern** - Controller/Action/Id
+  - Each controller method is mapped to an action.
+- **@{ }** - C# block in Razor Page; 
+- **ViewData** - dictionary created in controller and rendered in views;
+- Tag Helpers in Razor Pages
+  -  Examples: **asp-controller** and **asp-action**.
+- **IActionResult** return types:
+
+  ![image](https://user-images.githubusercontent.com/86172286/205783054-b25c2023-8088-4fc0-b4e8-cfa4ab606c52.png)
