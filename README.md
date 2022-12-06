@@ -28,7 +28,7 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 - **appsettings.json:** external resources configuration (logging, connection strings, etc.);
 - **Program.cs:** entry point and app configuration.
 
-## Controller and Razor pages tests
+## Controller and Razor
 
 - **Route pattern** - Controller/Action/Id
   - Each controller method is mapped to an action.
