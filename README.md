@@ -120,20 +120,22 @@ Note: we're using CODE-FIRST workflow
 </div>
   
 - Implement domain model
-  - `class` type
-    - **Seller** - Basic attributes: Id, Name, Email, BirthDate, BaseSalary
-    - **SalesRecord** - Basic attributes: Id, Date, Amount, Status(type: SalesStatus)
-  - `enum` type
-    - **SalesStatus** - Pending, Billed, Canceled
+  - Basic attributes
+    - `class` type
+      - **Seller** - Id, Name, Email, BirthDate, BaseSalary
+      - **SalesRecord** - Id, Date, Amount, Status(type: SalesStatus)
+    - `enum` type
+      - **SalesStatus** - Pending, Billed, Canceled
   
-- Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
-  - `class` 
-    - **Department** - `ICollection<Seller> Sellers` (relation a Department has several Sellers)
-      - **Seller** - `Department Department` (relation a Seller has only a Department)
-    - **Seller** - `ICollection<SalesRecord> SalesRecords` (relation a Seller has several Sales)
-      - **SalesRecord** - `Seller Seller` (relation a Sales Record has only a Seller)
+  - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
+    - `class` 
+      - **Department** - `ICollection<Seller> Sellers` (relation a Department has several Sellers)
+        - **Seller** - `Department Department` (relation a Seller has only a Department)
+      - **Seller** - `ICollection<SalesRecord> SalesRecords` (relation a Seller has several Sales)
+        - **SalesRecord** - `Seller Seller` (relation a Sales Record has only a Seller)
   
   - Constructors (default and with arguments)
+    - 
   - Custom methods
 
 - Add DbSet's in DbContext
