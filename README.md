@@ -1,6 +1,12 @@
 # Sales Web MVC
 Building a sales system using ASP.NET Core Web App.
 
+## Shortcuts in visual studio
+
+- `Ctrl + Shift + :` - comment out selected lines with /* */
+- `Ctrl + K + Ctrl + C` - comment out selected lines with //
+- ``Ctrl + K + D` - organize file indentation
+
 ## ASP.NET Core MVC overview
 
 - It is a framework for creating web applications;
@@ -93,3 +99,4 @@ Note: we're using CODE-FIRST workflow
 - Check database in SQL Server
   
 - Test app: CTRL+F5
+
