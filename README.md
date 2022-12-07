@@ -155,3 +155,11 @@ Note: we're using CODE-FIRST workflow
 - In `Data` folder(same function as Repository folder), create SeedingService(same function as the [ModelName]Repository file)
 - In `Program.cs`, register SeedingService for dependency injection system
 - In `Program.cs`, add SeedingService as parameter of Configure method. Call Seed for development profile
+
+## SellersController
+- Create Departments and Sellers links on navbar
+- Controller -> Add -> Controller -> MVC Controller - Empty -> SellersController
+- Create folder Views/Sellers
+- Views/Sellers -> Add -> View
+  - View name: Index
+  - Change title
