@@ -66,3 +66,5 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 
 ## Deleting Department view and controller (to then generate the complete CRUD with Scaffolding)
   
+- Delete controller Departments
+- Delete folder Views/Departments
