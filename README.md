@@ -154,4 +154,4 @@ Note: we're using CODE-FIRST workflow
 - Stop IIS
 - In `Data` folder(same function as Repository folder), create SeedingService(same function as the [ModelName]Repository file)
 - In `Program.cs`, register SeedingService for dependency injection system
-- In Program.cs, add SeedingService as parameter of Configure method. Call Seed for development profile
+- In `Program.cs`, add SeedingService as parameter of Configure method. Call Seed for development profile
