@@ -76,3 +76,20 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
   - Data context class: + and accept the name
   - Views (options): all three
   - Controller name: DepartmentsController
+
+## SQLServer and first migration
+  
+Note: we're using CODE-FIRST workflow
+  
+- In appsettings.json, set connection string from the database;
+  
+- Stop IIS
+  - CTRL+SHIFT+B
+  
+- Package Manager Console > create first Migration:
+  - Add-Migration Initial
+  - Update-Database
+  
+- Check database in SQL Server
+  
+- Test app: CTRL+F5
