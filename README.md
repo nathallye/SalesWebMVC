@@ -145,5 +145,6 @@ Note: we're using CODE-FIRST workflow
   - `public DbSet<Seller> Seller { get; set; }`
   - `public DbSet<SalesRecord> SalesRecord { get; set; }`
   
-- Add-Migration OtherEntities
+- Update Database with Entity Framework
+  - `Add-Migration [migration-name]`
   - `Update-Database`
