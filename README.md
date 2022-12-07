@@ -68,3 +68,12 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
   
 - Delete controller Departments
 - Delete folder Views/Departments
+
+## CRUD Scaffolding
+  
+- Right button `Controllers` > `Add` > `New Scaffolded Item`
+  - MVC controllers with views, using Entity Framework
+    - Model class: Department
+    - Data context class: + and accept the name
+    - Views (options): all three
+    - Controller name: DepartmentsController
