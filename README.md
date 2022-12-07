@@ -148,3 +148,10 @@ Note: we're using CODE-FIRST workflow
 - Update Database with Entity Framework
   - `Add-Migration [migration-name]`
   - `Update-Database`
+
+## Seeding Service(to "populate" the database)
+
+- Stop IIS
+- In repository Data, create SeedingService
+- In Program.cs, register SeedingService for dependency injection system
+- In Program.cs, add SeedingService as parameter of Configure method. Call Seed for development profile
