@@ -54,12 +54,12 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 - Create new folder `Views/Departments` (PLURAL)
 - Create view 
   - Right button `Views/Departments` > `Add` > `View`
-  - View name: Index
-  - Template: List
-  - Model class: Department
-  - Change Title to Departments
-  - Notice:
-    - @model definition
-    - intellisense for model
-    - Helper methods
-    - @foreach block
+    - View name: Index
+    - Template: List
+    - Model class: Department
+    - Change Title to Departments
+    - Notice:
+      - @model definition
+      - intellisense for model
+      - Helper methods
+      - @foreach block
