@@ -101,3 +101,12 @@ Note: we're using CODE-FIRST workflow
   
 - Test app: CTRL+F5
 
+## Changing theme
+
+- Go to: http://bootswatch.com/[version] (check Bootstrap version)
+  - Choose a theme
+  - Download bootstrap.css
+    - Suggestion: rename to bootstrap-name.css
+    - Save file to wwwroot/lib/bootstrap/dist/css (paste it inside Visual Studio)
+  - Open _Layout.cshtml
+    - Update bootstrap reference
