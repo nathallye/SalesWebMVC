@@ -120,11 +120,11 @@ Note: we're using CODE-FIRST workflow
 </div>
   
 - Implement domain model
-  - `class` Type
-    - Saller - Basic attributes: Id, Name, Email, BirthDate, BaseSalary
-    - SalesRecord - Basic attributes: Id, Date, Amount, Status
-  - `enum` Type
-    - SalesStatus - Pending, Billed, Canceled
+  - `class` type
+    - **Saller** - Basic attributes: Id, Name, Email, BirthDate, BaseSalary
+    - **SalesRecord** - Basic attributes: Id, Date, Amount, Status(type: SalesStatus)
+  - `enum` type
+    - **SalesStatus** - Pending, Billed, Canceled
   - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
   - Constructors (default and with arguments)
   - Custom methods
