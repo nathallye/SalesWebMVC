@@ -1,7 +1,7 @@
 # Sales Web MVC
 Building a sales system using ASP.NET Core Web App.
 
-## Shortcuts in visual studio
+## Shortcuts in Visual Studio
 
 - `Ctrl + Shift + :` - comment out selected lines with /* */
 - `Ctrl + K + Ctrl + C` - comment out selected lines with //
