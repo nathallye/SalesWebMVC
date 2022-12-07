@@ -128,12 +128,11 @@ Note: we're using CODE-FIRST workflow
       - **SalesStatus** - Pending, Billed, Canceled
   
   - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
-    - `class` 
-      - **Department** - `ICollection<Seller> Sellers` (relation a Department has several Sellers)
-        - **Seller** - `Department Department` (relation a Seller has only a Department)
-      - **Seller** - `ICollection<SalesRecord> SalesRecords` (relation a Seller has several Sales)
-        - **SalesRecord** - `Seller Seller` (relation a Sales Record has only a Seller)
-  
+    - **Department** - `ICollection<Seller> Sellers` (relation a Department has several Sellers)
+      - **Seller** - `Department Department` (relation a Seller has only a Department)
+    - **Seller** - `ICollection<SalesRecord> SalesRecords` (relation a Seller has several Sales)
+      - **SalesRecord** - `Seller Seller` (relation a Sales Record has only a Seller)
+
   - Constructors
     - **default**
     - **with arguments** (include all attributes that are not collections)
