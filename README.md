@@ -81,7 +81,7 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
   
 Note: we're using CODE-FIRST workflow
   
-- In appsettings.json, set connection string from the database;
+- In `appsettings.json`, set connection string from the database;
   
 - Stop IIS
   - CTRL+SHIFT+B
