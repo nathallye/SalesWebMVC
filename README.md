@@ -121,6 +121,9 @@ Note: we're using CODE-FIRST workflow
   
 - Implement domain model
   - Basic attributes
+    - Saller - Id, Name, Email, BirthDate, BaseSalary
+    - SalesRecord - Id, Date, Amount, Status
+    - SalesStatus - Pending, Billed, Canceled
   - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
   - Constructors (default and with arguments)
   - Custom methods
