@@ -141,7 +141,7 @@ Note: we're using CODE-FIRST workflow
     - **Seller** - AddSales, RemoveSales, TotalSales
     - **Department** - AddSaller, TotalSales
   
-- Add DbSet's in DbContext
+- Add DbSet's in DbContext (Data/SalesWebMVCContext)
   - `public DbSet<Seller> Seller { get; set; }`
   - `public DbSet<SalesRecord> SalesRecord { get; set; }`
   
@@ -152,6 +152,6 @@ Note: we're using CODE-FIRST workflow
 ## Seeding Service(to "populate" the database)
 
 - Stop IIS
-- In Data repository, create SeedingService
+- In `Data` folder(same function as Repository folder), create SeedingService(same function as the [ModelName]Repository file)
 - In Program.cs, register SeedingService for dependency injection system
 - In Program.cs, add SeedingService as parameter of Configure method. Call Seed for development profile
