@@ -138,7 +138,9 @@ Note: we're using CODE-FIRST workflow
     - **with arguments** (include all attributes that are not collections)
   
   - Custom methods
-
+    - **Seller** - AddSales, RemoveSales, TotalSales
+    - **Department** - AddSaller, TotalSales
+  
 - Add DbSet's in DbContext
 - Add-Migration OtherEntities
   - `Update-Database`
