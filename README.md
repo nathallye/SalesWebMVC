@@ -86,9 +86,9 @@ Note: we're using CODE-FIRST workflow
 - Stop IIS
   - CTRL+SHIFT+B
   
-- Package Manager Console > create first Migration:
-  - Add-Migration Initial
-  - Update-Database
+- In `Package Manager Console` create first Migration with the following commands:
+  - `Add-Migration Initial`
+  - `Update-Database`
   
 - Check database in SQL Server
   
