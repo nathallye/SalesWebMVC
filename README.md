@@ -152,6 +152,6 @@ Note: we're using CODE-FIRST workflow
 ## Seeding Service(to "populate" the database)
 
 - Stop IIS
-- In repository Data, create SeedingService
+- In Data repository, create SeedingService
 - In Program.cs, register SeedingService for dependency injection system
 - In Program.cs, add SeedingService as parameter of Configure method. Call Seed for development profile
