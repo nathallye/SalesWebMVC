@@ -45,7 +45,7 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
 - Create new folder `ViewModels` e move `ErrorViewModel` (including namespace)
   - CTRL+SHIFT+B to fix references
   
-- Create class `Models/Department`
+- Create class `Models/Department` (attributes Id and Name)
 - Create controller
   - Right button `Controllers` > `Add` > `Controller` > `MVC Controller Empty`
     - Name: `DepartmentsController` (PLURAL)
