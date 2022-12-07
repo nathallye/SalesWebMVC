@@ -130,7 +130,7 @@ Note: we're using CODE-FIRST workflow
   - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
     - **Department** - `ICollection<Seller> Sellers` (relation a Department has several Sellers)
       - **Seller** - `Department Department` (relation a Seller has only a Department)
-    - **Seller** - `ICollection<SalesRecord> SalesRecords` (relation a Seller has several Sales)
+    - **Seller** - `ICollection<SalesRecord> Sales` (relation a Seller has several Sales)
       - **SalesRecord** - `Seller Seller` (relation a Sales Record has only a Seller)
 
   - Constructors
