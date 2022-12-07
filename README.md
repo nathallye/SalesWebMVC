@@ -134,8 +134,10 @@ Note: we're using CODE-FIRST workflow
       - **Seller** - `ICollection<SalesRecord> SalesRecords` (relation a Seller has several Sales)
         - **SalesRecord** - `Seller Seller` (relation a Sales Record has only a Seller)
   
-  - Constructors (default and with arguments)
-    - 
+  - Constructors
+    - **default**
+    - **with arguments**
+  
   - Custom methods
 
 - Add DbSet's in DbContext
