@@ -6,6 +6,7 @@ Building a sales system using ASP.NET Core Web App.
 - `Ctrl + Shift + :` - comment out selected lines with /* */
 - `Ctrl + K + Ctrl + C` - comment out selected lines with //
 - `Ctrl + K + D` - organize file indentation
+- `cw + tab tab` - console writeline
 
 ## ASP.NET Core MVC overview
 
