@@ -157,7 +157,7 @@ Note: we're using CODE-FIRST workflow
 - In `Program.cs`, add SeedingService as parameter of Configure method. Call Seed for development profile
 
 ## SellersController
-- Create Departments and Sellers links on navbar
+- Create Departments and Sellers links on navbar (Views/Shared/_Layout.cshtml)
 - Controller -> Add -> Controller -> MVC Controller - Empty -> SellersController
 - Create folder Views/Sellers
 - Views/Sellers -> Add -> View
