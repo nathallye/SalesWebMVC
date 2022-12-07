@@ -123,9 +123,9 @@ Note: we're using CODE-FIRST workflow
   - Basic attributes
     - `class` type
       - **Seller** - Id, Name, Email, BirthDate, BaseSalary
-      - **SalesRecord** - Id, Date, Amount, Status(type: SalesStatus)
+      - **SalesRecord** - Id, Date, Amount, Status(type: SaleStatus)
     - `enum` type
-      - **SalesStatus** - Pending, Billed, Canceled
+      - **SaleStatus** - Pending, Billed, Canceled
   
   - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
     - **Department** - `ICollection<Seller> Sellers` (relation a Department has several Sellers)
