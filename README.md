@@ -63,3 +63,6 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
       - intellisense for model
       - Helper methods
       - @foreach block
+
+## Deleting Department view and controller (to then generate the complete CRUD with Scaffolding)
+  
