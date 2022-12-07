@@ -142,5 +142,8 @@ Note: we're using CODE-FIRST workflow
     - **Department** - AddSaller, TotalSales
   
 - Add DbSet's in DbContext
+  - `public DbSet<Seller> Seller { get; set; }`
+  - `public DbSet<SalesRecord> SalesRecord { get; set; }`
+  
 - Add-Migration OtherEntities
   - `Update-Database`
