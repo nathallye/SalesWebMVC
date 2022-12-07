@@ -45,7 +45,9 @@ In Visual Studio 2022, select the `Create a new project` > then the type of proj
   -  Examples: **asp-controller** and **asp-action**.
 - **IActionResult** return types:
 
-  ![image](https://user-images.githubusercontent.com/86172286/205783054-b25c2023-8088-4fc0-b4e8-cfa4ab606c52.png)
+  <div align="center">
+    <img width="700" src="https://user-images.githubusercontent.com/86172286/205783054-b25c2023-8088-4fc0-b4e8-cfa4ab606c52.png">
+  </div>
 
 ## First Model-Controller-View - Department
 
@@ -110,3 +112,19 @@ Note: we're using CODE-FIRST workflow
     - Save file to wwwroot/lib/bootstrap/dist/css (paste it inside Visual Studio)
   - Open _Layout.cshtml
     - Update bootstrap reference
+  
+## Other entities and second migration
+  
+<div align="center">
+  <img width="700" src="https://user-images.githubusercontent.com/86172286/206231879-4781fec0-9a09-4d3d-b043-1cf8812005f6.png">
+</div>
+  
+- Implement domain model
+  - Basic attributes
+  - Association (let's use ICollection, which matches List, HashSet, etc. - INSTANTIATE!)
+  - Constructors (default and with arguments)
+  - Custom methods
+
+- Add DbSet's in DbContext
+- Add-Migration OtherEntities
+  - `Update-Database`
