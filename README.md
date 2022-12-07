@@ -136,7 +136,7 @@ Note: we're using CODE-FIRST workflow
   
   - Constructors
     - **default**
-    - **with arguments**
+    - **with arguments** (include all attributes that are not collections)
   
   - Custom methods
 
