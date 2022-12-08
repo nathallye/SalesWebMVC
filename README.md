@@ -169,7 +169,7 @@ Note: we're using CODE-FIRST workflow
 - Create folder Services
   - Create SellerService
 
-- In `Program.cs`, register SellerService to dependency injection system
+- In `Program.cs`, register SellerService to dependency injection system(`builder.Services.AddScoped<SellerService, SellerService>();`)
 
 - In SellerService, implement FindAll, returning List<Seller>
 - In SellersController, implement Index method, which should call SellerService.FindAll
