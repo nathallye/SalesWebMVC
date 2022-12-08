@@ -208,3 +208,16 @@ Note: we're using CODE-FIRST workflow
 
 - Create `SellerFormViewModel`
   - Attributes Seller, ICollection<Department> Departments
+  
+- In Seller controller:
+  - New dependency: DepartmentService
+    - `public readonly DepartmentService _departmentService;`
+  - Update `Create` GET action
+  ``` C#
+  public IActionResult Create() 
+    {
+      var departments = _departmentService.FindAll();
+      var viewModel = new SellerFormViewModel { Departments = departments };
+      return View(viewModel); // agora a tela de cadastro já vai receber a lista de departamentos existentes
+    }
+  ```
