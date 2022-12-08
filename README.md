@@ -169,7 +169,8 @@ Note: we're using CODE-FIRST workflow
 - Create folder Services
   - Create SellerService
 
-- In `Program.cs`, register SellerService to dependency injection system(`builder.Services.AddScoped<SellerService, SellerService>();`)
+- In `Program.cs`, register SellerService to dependency injection system
+  - `builder.Services.AddScoped<SellerService, SellerService>();`
 
 - In Services/SellerService, implement `FindAll`, returning List<Seller>
 - In Services/SellersController, implement `Index` method, which should call SellerService.FindAll
@@ -203,5 +204,6 @@ Note: we're using CODE-FIRST workflow
 - Create `DepartmentService` with `FindAll` method
 
 - In `Program.cs`, register `DepartmentService` to dependency injection system
+  - `builder.Services.AddScoped<DepartmentService, DepartmentService>();`
 
 - Create `SellerFormViewModel`
