@@ -260,3 +260,16 @@ Note: we're using CODE-FIRST workflow
             o primeiro argumento do SelectList vai ser a coleção, o segundo a chave, e o terceiro o valor que vai aparecer na lista*@
     </div>
     ```
+  
+ - In SellerService.Insert, delete "First" call
+  
+  ``` C#
+  public void Insert(Seller obj)
+  {
+    /*obj.Department = _context.Department.First();*/
+    _context.Add(obj);
+    _context.SaveChanges();
+  }
+  ```
+ 
+ - Reference: https://stackoverflow.com/questions/34624034/select-tag-helper-in-asp-net-core-mvc
