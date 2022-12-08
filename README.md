@@ -163,3 +163,18 @@ Note: we're using CODE-FIRST workflow
 - Views/Sellers -> Add -> View
   - View name: Index
   - Change title
+  
+## SellerService and basic FindAll
+
+- Create folder Services
+  - Create SellerService
+
+- In `Program.cs`, register SellerService to dependency injection system
+
+- In SellerService, implement FindAll, returning List<Seller>
+- In SellersController, implement Index method, which should call SellerService.FindAll
+
+- In Views/Sellers/Index, write template code to show Sellers
+
+- Suggestion: user classes "table-striped table-hover" for table
+- Note: we're going to apply formatting in later classes
