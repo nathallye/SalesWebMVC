@@ -197,3 +197,11 @@ Note: we're using CODE-FIRST workflow
   
 - Update `SellerService.Insert` for now: 
   - `obj.Department = _context.Department.First();` - to assign to this seller the id of the first department of the table
+
+## SellerFormViewModel and Department select component
+
+- Create `DepartmentService` with `FindAll` method
+
+- In `Program.cs`, register `DepartmentService` to dependency injection system
+
+- Create `SellerFormViewModel`
