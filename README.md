@@ -182,7 +182,7 @@ Note: we're using CODE-FIRST workflow
 ## Simple Create form (Seller)
 
 - In Views/Sellers/Index, create link to `Create`
-- In controller, implement `Create` GET action
+- In Sellers controller, implement `Create` GET action
 - In Views/Sellers, create `Create` view
 - In Services/SellerService create `Insert` method
-- In controller, implement `Create` POST action
+- In Sellers controller, implement `Create` POST action
