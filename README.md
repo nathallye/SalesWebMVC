@@ -149,7 +149,7 @@ Note: we're using CODE-FIRST workflow
   - `Add-Migration [migration-name]`
   - `Update-Database`
 
-## Seeding Service(to "populate" the database)
+## SeedingService(to "populate" the database)
 
 - Stop IIS
 - In `Data` folder(same function as Repository folder), create SeedingService(same function as the [ModelName]Repository file)
