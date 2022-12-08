@@ -207,3 +207,4 @@ Note: we're using CODE-FIRST workflow
   - `builder.Services.AddScoped<DepartmentService, DepartmentService>();`
 
 - Create `SellerFormViewModel`
+  - Attributes Seller, ICollection<Department> Departments
