@@ -186,3 +186,10 @@ Note: we're using CODE-FIRST workflow
 - In Views/Sellers, create `Create` view
 - In Services/SellerService create `Insert` method
 - In Sellers controller, implement `Create` POST action
+
+## Foreign key not null (referential integrity)
+
+- In Seller Model, add DepartmentId
+- Drop database
+- Create new migration, update database
+- Update SellerService.Insert for now: obj.Department = _context.Department.First();
