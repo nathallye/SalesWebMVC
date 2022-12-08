@@ -193,4 +193,5 @@ Note: we're using CODE-FIRST workflow
 - Create new migration, update database
   - Add-Migration [migration-name]
   - Update-Database
-- Update SellerService.Insert for now: obj.Department = _context.Department.First();
+- Update `SellerService.Insert` for now: 
+  - `obj.Department = _context.Department.First();` - to assign to this seller the id of the first department of the table
