@@ -214,16 +214,26 @@ Note: we're using CODE-FIRST workflow
     - `public readonly DepartmentService _departmentService;`
   - Update `Create` GET action
   
-  ``` C#
-  public IActionResult Create() 
-    {
-      var departments = _departmentService.FindAll();
-      var viewModel = new SellerFormViewModel { Departments = departments };
-      return View(viewModel); // agora a tela de cadastro já vai receber a lista de departamentos existentes
-    }
-  ```
+    ``` C#
+    public IActionResult Create() 
+      {
+        var departments = _departmentService.FindAll();
+        var viewModel = new SellerFormViewModel { Departments = departments };
+        return View(viewModel); // agora a tela de cadastro já vai receber a lista de departamentos existentes
+      }
+    ```
   
 - In Views/Sellers/Create:
   - Update model type to SellerFormViewModel
   - Update form fields
-  - Add select component for DepartmentId
+  - Add select component for `DepartmentId`
+  
+    ``` RAZOR
+    <div class="form-group">
+        <label asp-for="Seller.DepartmentId" class="control-label"></label>
+        <select asp-for="Seller.DepartmentId"
+            asp-items="@(new SelectList(Model.Departments,"Id", "Name"))" class="form-control"></select>
+        @*asp-items - vai construir os itens da caixa de seleção com base na coleção, 
+        o primeiro argumento do SelectList vai ser a coleção, o segundo a chave, e o terceiro o valor que vai aparecer na lista*@
+    </div>
+    ```
