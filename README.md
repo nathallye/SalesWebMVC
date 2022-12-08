@@ -233,7 +233,7 @@ Note: we're using CODE-FIRST workflow
         <label asp-for="Seller.DepartmentId" class="control-label"></label>
         <select asp-for="Seller.DepartmentId"
             asp-items="@(new SelectList(Model.Departments,"Id", "Name"))" class="form-control"></select>
-        @*asp-items - vai construir os itens da caixa de seleção com base na coleção, 
-        o primeiro argumento do SelectList vai ser a coleção, o segundo a chave, e o terceiro o valor que vai aparecer na lista*@
+            @*asp-items - vai construir os itens da caixa de seleção com base na coleção, 
+            o primeiro argumento do SelectList vai ser a coleção, o segundo a chave, e o terceiro o valor que vai aparecer na lista*@
     </div>
     ```
