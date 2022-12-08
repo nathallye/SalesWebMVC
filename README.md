@@ -142,8 +142,10 @@ Note: we're using CODE-FIRST workflow
     - **Department** - AddSaller, TotalSales
   
 - Add DbSet's in DbContext (Data/SalesWebMVCContext)
-  - `public DbSet<Seller> Seller { get; set; }`
-  - `public DbSet<SalesRecord> SalesRecord { get; set; }`
+    ``` C#
+    public DbSet<Seller> Seller { get; set; }
+    public DbSet<SalesRecord> SalesRecord { get; set; }
+    ```
   
 - Update Database with Entity Framework
   - `Add-Migration [migration-name]`
@@ -170,7 +172,10 @@ Note: we're using CODE-FIRST workflow
   - Create SellerService
 
 - In `Program.cs`, register SellerService to dependency injection system
-  - `builder.Services.AddScoped<SellerService, SellerService>();`
+   
+  ``` C#
+  builder.Services.AddScoped<SellerService, SellerService>();`
+  ```
 
 - In Services/SellerService, implement `FindAll`, returning List<Seller>
 - In Services/SellersController, implement `Index` method, which should call SellerService.FindAll
@@ -197,21 +202,32 @@ Note: we're using CODE-FIRST workflow
   - `Update-Database`
   
 - Update `SellerService.Insert` for now: 
-  - `obj.Department = _context.Department.First();` - to assign to this seller the id of the first department of the table
+  
+  ``` C#
+  obj.Department = _context.Department.First();
+  ```
+  - To assign to this seller the id of the first department of the table
 
 ## SellerFormViewModel and Department select component
 
 - Create `DepartmentService` with `FindAll` method
 
 - In `Program.cs`, register `DepartmentService` to dependency injection system
-  - `builder.Services.AddScoped<DepartmentService, DepartmentService>();`
+  
+  ``` C#
+  builder.Services.AddScoped<DepartmentService, DepartmentService>();
+  ```
 
 - Create `SellerFormViewModel`
   - Attributes Seller, ICollection<Department> Departments
   
 - In Seller controller:
   - New dependency: DepartmentService
-    - `public readonly DepartmentService _departmentService;`
+    
+    ``` C#
+    public readonly DepartmentService _departmentService;
+    ```
+  
   - Update `Create` GET action
   
     ``` C#
