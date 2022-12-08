@@ -213,6 +213,7 @@ Note: we're using CODE-FIRST workflow
   - New dependency: DepartmentService
     - `public readonly DepartmentService _departmentService;`
   - Update `Create` GET action
+  
   ``` C#
   public IActionResult Create() 
     {
@@ -221,3 +222,8 @@ Note: we're using CODE-FIRST workflow
       return View(viewModel); // agora a tela de cadastro já vai receber a lista de departamentos existentes
     }
   ```
+  
+- In Views/Sellers/Create:
+  - Update model type to SellerFormViewModel
+  - Update form fields
+  - Add select component for DepartmentId
