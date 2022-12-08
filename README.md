@@ -171,8 +171,8 @@ Note: we're using CODE-FIRST workflow
 
 - In `Program.cs`, register SellerService to dependency injection system(`builder.Services.AddScoped<SellerService, SellerService>();`)
 
-- In SellerService, implement FindAll, returning List<Seller>
-- In SellersController, implement Index method, which should call SellerService.FindAll
+- In Services/SellerService, implement `FindAll`, returning List<Seller>
+- In Services/SellersController, implement `Index` method, which should call SellerService.FindAll
 
 - In Views/Sellers/Index, write template code to show Sellers
 
