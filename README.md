@@ -178,3 +178,11 @@ Note: we're using CODE-FIRST workflow
 
 - Suggestion: user classes "table-striped table-hover" for table
 - Note: we're going to apply formatting in later classes
+
+## Simple Create form (Seller)
+
+- In Views/Sellers/Index, create link to `Create`
+- In controller, implement `Create` GET action
+- In Views/Sellers, create `Create` view
+- In Services/SellerService create `Insert` method
+- In controller, implement `Create` POST action
