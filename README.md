@@ -190,6 +190,7 @@ Note: we're using CODE-FIRST workflow
 ## Foreign key not null (referential integrity)
 
 - In Seller Model, add DepartmentId
-- Drop database
 - Create new migration, update database
+  - Add-Migration [migration-name]
+  - Update-Database
 - Update SellerService.Insert for now: obj.Department = _context.Department.First();
