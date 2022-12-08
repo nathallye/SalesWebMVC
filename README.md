@@ -261,7 +261,7 @@ Note: we're using CODE-FIRST workflow
     </div>
     ```
   
- - In SellerService.Insert, delete "First" call
+ - In `SellerService` Action `Insert`, delete "First" call
   
   ``` C#
   public void Insert(Seller obj)
