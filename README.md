@@ -225,7 +225,14 @@ Note: we're using CODE-FIRST workflow
   
 - In Views/Sellers/Create:
   - Update model type to SellerFormViewModel
+    
+    ``` RAZOR
+    @model SalesWebMVC.Models.ViewModels.SellerFormViewModel;
+    ```
+    
   - Update form fields
+    - `asp-for="Seller.[attribute-name]"`
+  
   - Add select component for `DepartmentId`
   
     ``` RAZOR
