@@ -383,3 +383,21 @@ Note: we're using CODE-FIRST workflow
   ```
   
 - Test App
+
+## Seller details and eager loading
+  
+- https://docs.microsoft.com/en-us/ef/core/querying/related-data
+- In View/Sellers/Index, check link to `Details` action
+  
+  ``` RAZOR
+  <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+  ```
+  
+- In Seller Controller, create `Details` GET action
+  
+  ``` C#
+  
+  ```
+  
+- Create view: View/Sellers/Details
+- Include in FindAll: Include(obj => obj.Department) (namespace: Microsoft.EntityFrameworkCore)
