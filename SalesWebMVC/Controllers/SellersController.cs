@@ -2,6 +2,7 @@
 using SalesWebMVC.Models;
 using SalesWebMVC.Models.ViewModels;
 using SalesWebMVC.Services;
+using SalesWebMVC.Services.Exceptions;
 
 namespace SalesWebMVC.Controllers
 {
@@ -79,6 +80,50 @@ namespace SalesWebMVC.Controllers
             }
 
             return View(obj);
+        }
+
+        public IActionResult Edit(int? id)
+        {
+            if (id == null) // testando se o id existe
+            {
+                return NotFound();
+            }
+
+            var obj = _sellerService.FindById(id.Value);
+            if (obj == null) // testando se o obj existe
+            {
+                return NotFound();
+            }
+
+            // se passar pelas condições acima podemos atualizar o obj
+            List<Department> departments = _departmentService.FindAll(); // popular a lista de departamentos
+            SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments }; // criar a view model já passando os dados do obj e a lista de departamentos
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Seller seller)
+        {
+            if (id != seller.Id) // se o id passado como parâmetro para action for diferente do Id do seller
+            {
+                // retorna bad request
+                return BadRequest();
+            }
+            try
+            {
+                // se passar pela condição acima podemos atualizar o seller
+                _sellerService.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch (DbConcurrencyException)
+            {
+                return BadRequest();
+            }
         }
     }
 }
