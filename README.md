@@ -555,3 +555,59 @@ Note: we're using CODE-FIRST workflow
 - Test app
   
 - Notice: ASP.NET Core selects option based on `DepartmentId`
+  
+## Returning custom error page
+
+- Update `ErrorViewModel.cs` in Models/ViewModels
+  
+  ``` C#
+  namespace SalesWebMVC.Models.ViewModels
+  {
+      public class ErrorViewModel
+      {
+          public string? RequestId { get; set; }
+          public string Message { get; set; }
+
+          public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+      }
+  }
+  ```
+  
+- Update `Error.cshtml` in Views/Shared
+  
+  ``` RAZOR
+  @model SalesWebMVC.Models.ViewModels.ErrorViewModel;
+
+  @{
+      ViewData["Title"] = "Error";
+  }
+
+  <h1 class="text-danger">@ViewData["Title"].</h1>
+  <h2 class="text-danger">@Model.Message</h2>
+
+  @if (Model.ShowRequestId)
+  {
+      <p>
+          <strong>Request ID:</strong> <code>@Model.RequestId</code>
+      </p>
+  }
+  ```
+  
+- In `Sellers Controller`:
+  - Create Error action with message parameter
+  
+    ``` C#
+    public IActionResult Error(string message)
+    {
+        var viewModel = new ErrorViewModel
+        {
+            Message = message,
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier // "macete" do framework para pegar o Id interno da requisição
+        };
+
+        return View(viewModel);
+    }
+    ```
+  
+  - Update method calls
+    - Swap calls from NotFound() and BadRequest() to the `Error` action.
