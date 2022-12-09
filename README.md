@@ -266,7 +266,7 @@ Note: we're using CODE-FIRST workflow
 - Create `SellerFormViewModel`
   - Attributes Seller, ICollection<Department> Departments
   
-- In Seller controller:
+- In Sellers controller:
   - New dependency: DepartmentService
     
     ``` C#
@@ -337,7 +337,7 @@ Note: we're using CODE-FIRST workflow
   }
   ```
   
-- In `Seller Controller`, create `Delete` GET action
+- In `Sellers Controller`, create `Delete` GET action
   
   ``` C#
   // Action Delete com o método get só para exibirmos a tela confirmação
@@ -368,7 +368,7 @@ Note: we're using CODE-FIRST workflow
   - View/Sellers/Delete
 - Test App
 
-- In `Seller Controller`, create `Delete` POST action
+- In `Sellers Controller`, create `Delete` POST action
   
   ``` C#
   // Action Delete com o método post para deletarmos de fato e redirecionar
@@ -392,7 +392,7 @@ Note: we're using CODE-FIRST workflow
   <a asp-action="Details" asp-route-id="@item.Id">Details</a>
   ```
   
-- In Seller Controller, create `Details` GET action
+- In Sellers Controller, create `Details` GET action
   
   ``` C#
   public IActionResult Details(int? id) 
@@ -424,3 +424,17 @@ Note: we're using CODE-FIRST workflow
       return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id); // JOIN com EF
   }
   ```
+
+## Update seller and custom service exception
+
+- Create Services/Exceptions folder
+- Create NotFoundException and DbConcurrencyException
+- In SellerService, create Update method
+- In View/Sellers/Index, check link to "Edit" action
+- In controller, create "Edit" GET action
+- Create view: View/Sellers/Edit (similar do Create, plus hidden id)
+- Test app
+
+- In controller, create "Edit" POST action
+- Test app
+ Notice: ASP.NET Core selects option based on DepartmentId
