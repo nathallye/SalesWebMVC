@@ -189,9 +189,38 @@ Note: we're using CODE-FIRST workflow
 
 - In Views/Sellers/Index, create link to `Create`
 - In Sellers controller, implement `Create` GET action
+  
+  ``` C#
+  public IActionResult Create() 
+  {
+      var departments = _departmentService.FindAll();
+      var viewModel = new SellerFormViewModel { Departments = departments };
+      return View(viewModel); // agora a tela de cadastro já vai receber a lista de departamentos existentes
+  }
+  ```
+  
 - In Views/Sellers, create `Create` view
 - In Services/SellerService create `Insert` method
+  
+  ``` C#
+  public void Insert(Seller obj)
+  {
+      _context.Add(obj);
+      _context.SaveChanges();
+  }
+  ```
+  
 - In Sellers controller, implement `Create` POST action
+  
+  ``` C#
+  [HttpPost]
+  [ValidateAntiForgeryToken] // evitar ataques do tipo xsrf
+  public IActionResult Create(Seller seller)
+  {
+      _sellerService.Insert(seller);
+      return RedirectToAction(nameof(Index)); // nameof - para previnir caso essa view tenha o nome trocado não quebre o código
+  }
+  ```
 
 ## Foreign key not null (referential integrity)
 
@@ -324,4 +353,17 @@ Note: we're using CODE-FIRST workflow
 - Test App
 
 - In `Seller Controller`, create `Delete` POST action
+  
+  ``` C#
+  // Action Delete com o método post para deletarmos de fato e redirecionar
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public IActionResult Delete(int id)
+  {
+
+      _sellerService.Remove(id);
+      return RedirectToAction(nameof(Index));
+  }
+  ```
+  
 - Test App
