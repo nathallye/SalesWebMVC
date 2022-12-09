@@ -273,3 +273,15 @@ Note: we're using CODE-FIRST workflow
   ```
  
  - Reference: https://stackoverflow.com/questions/34624034/select-tag-helper-in-asp-net-core-mvc
+ 
+## Delete seller
+
+- In `SellerService`, create `FindById` and Remove operations
+- In `Seller Controller`, create `Delete` GET action
+- In View/Sellers/Index, check link to `Delete` action
+- Create delete confirmation view: 
+  - View/Sellers/Delete
+- Test App
+
+- In `Seller Controller`, create `Delete` POST action
+- Test App
