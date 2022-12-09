@@ -516,12 +516,40 @@ Note: we're using CODE-FIRST workflow
   ```
   
 - Create view: View/Sellers/Edit (similar do Create, plus hidden id)
+  
+  ``` RAZOR
+  <input type="hidden" asp-for="Seller.Id" />
+  ```
+  
 - Test app
 
 - In `Sellers Controller`, create `Edit` POST action
   
   ``` C#
-  
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public IActionResult Edit(int id, Seller seller)
+  {
+      if (id != seller.Id) // se o id passado como parâmetro para action for diferente do Id do seller
+      {
+          // retorna bad request
+          return BadRequest();
+      }
+      try
+      {
+          // se passar pela condição acima podemos atualizar o seller
+          _sellerService.Update(seller);
+          return RedirectToAction(nameof(Index));
+      }
+      catch (NotFoundException)
+      {
+          return NotFound();
+      }
+      catch (DbConcurrencyException)
+      {
+          return BadRequest();
+      }
+  }
   ```
   
 - Test app
