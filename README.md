@@ -489,13 +489,30 @@ Note: we're using CODE-FIRST workflow
 - In View/Sellers/Index, check link to `Edit` action
   
   ``` RAZOR
-  
+  <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-success">Edit</a>
   ```
   
 - In `Sellers Controller`, create `Edit` GET action
   
   ``` C#
-  
+  public IActionResult Edit(int? id)
+  {
+      if (id == null) // testando se o id existe
+      {
+          return NotFound();
+      }
+
+      var obj = _sellerService.FindById(id.Value);
+      if (obj == null) // testando se o obj existe
+      {
+          return NotFound();
+      }
+
+      // se passar pelas condições acima podemos atualizar o obj
+      List<Department> departments = _departmentService.FindAll(); // popular a lista de departamentos
+      SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departments = departments }; // criar a view model já passando os dados do obj e a lista de departamentos
+      return View(viewModel);
+  }
   ```
   
 - Create view: View/Sellers/Edit (similar do Create, plus hidden id)
