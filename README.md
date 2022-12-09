@@ -610,4 +610,4 @@ Note: we're using CODE-FIRST workflow
     ```
   
   - Update method calls
-    - Swap calls from NotFound() and BadRequest() to the `Error` action.
+    - Swap calls from NotFound() and BadRequest() to the `RedirectToAction(Error)` action.
