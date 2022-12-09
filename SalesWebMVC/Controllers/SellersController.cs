@@ -3,6 +3,7 @@ using SalesWebMVC.Models;
 using SalesWebMVC.Models.ViewModels;
 using SalesWebMVC.Services;
 using SalesWebMVC.Services.Exceptions;
+using System.Diagnostics;
 
 namespace SalesWebMVC.Controllers
 {
@@ -42,15 +43,15 @@ namespace SalesWebMVC.Controllers
         // Action Delete com o método get só para exibirmos a tela confirmação
         public IActionResult Delete(int? id)
         {
-            if (id == null)
+            if (id == null) // testando se o id foi passado
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) 
+            if (obj == null) // testando se o id passado existe
             { 
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
             return View(obj);
@@ -70,13 +71,13 @@ namespace SalesWebMVC.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
             return View(obj);
@@ -84,15 +85,15 @@ namespace SalesWebMVC.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if (id == null) // testando se o id existe
+            if (id == null) // testando se o id foi passado
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided" });
             }
 
             var obj = _sellerService.FindById(id.Value);
-            if (obj == null) // testando se o obj existe
+            if (obj == null) // testando se o id passado existe
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found" });
             }
 
             // se passar pelas condições acima podemos atualizar o obj
@@ -108,7 +109,7 @@ namespace SalesWebMVC.Controllers
             if (id != seller.Id) // se o id passado como parâmetro para action for diferente do Id do seller
             {
                 // retorna bad request
-                return BadRequest();
+                return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
             }
             try
             {
@@ -116,14 +117,25 @@ namespace SalesWebMVC.Controllers
                 _sellerService.Update(seller);
                 return RedirectToAction(nameof(Index));
             }
-            catch (NotFoundException)
+            catch (NotFoundException e)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
-            catch (DbConcurrencyException)
+            catch (DbConcurrencyException e)
             {
-                return BadRequest();
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel
+            {
+                Message = message,
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier // "macete" do framework para pegar o Id interno da requisição
+            };
+
+            return View(viewModel);
         }
     }
 }
