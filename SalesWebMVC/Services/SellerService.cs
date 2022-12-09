@@ -29,7 +29,8 @@ namespace SalesWebMVC.Services
 
         public Seller FindById(int id) 
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            // return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id); // JOIN com EF
         }
 
         public void Remove(int id) 
