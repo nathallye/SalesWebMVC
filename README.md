@@ -415,7 +415,7 @@ Note: we're using CODE-FIRST workflow
 - Create view: View/Sellers/Details
 
 - https://docs.microsoft.com/en-us/ef/core/querying/related-data
-- Include in FindAll: Include(obj => obj.Department) (namespace: Microsoft.EntityFrameworkCore)
+- In SellerService include in FindById: Include(obj => obj.Department) (namespace: Microsoft.EntityFrameworkCore)
   
   ``` C#
   public Seller FindById(int id) 
