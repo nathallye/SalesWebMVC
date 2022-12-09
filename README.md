@@ -386,7 +386,6 @@ Note: we're using CODE-FIRST workflow
 
 ## Seller details and eager loading
   
-- https://docs.microsoft.com/en-us/ef/core/querying/related-data
 - In View/Sellers/Index, check link to `Details` action
   
   ``` RAZOR
@@ -414,6 +413,8 @@ Note: we're using CODE-FIRST workflow
   ```
   
 - Create view: View/Sellers/Details
+
+- https://docs.microsoft.com/en-us/ef/core/querying/related-data
 - Include in FindAll: Include(obj => obj.Department) (namespace: Microsoft.EntityFrameworkCore)
   
   ``` C#
