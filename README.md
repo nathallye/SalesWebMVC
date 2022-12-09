@@ -415,3 +415,11 @@ Note: we're using CODE-FIRST workflow
   
 - Create view: View/Sellers/Details
 - Include in FindAll: Include(obj => obj.Department) (namespace: Microsoft.EntityFrameworkCore)
+  
+  ``` C#
+  public Seller FindById(int id) 
+  {
+      // return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+      return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id); // JOIN com EF
+  }
+  ```
