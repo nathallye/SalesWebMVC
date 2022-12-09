@@ -295,6 +295,7 @@ Note: we're using CODE-FIRST workflow
 - In `Seller Controller`, create `Delete` GET action
   
   ``` C#
+  // Action Delete com o método get só para exibirmos a tela confirmação
   public IActionResult Delete(int? id)
   {
       if (id == null)
