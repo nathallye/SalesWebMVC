@@ -313,6 +313,11 @@ Note: we're using CODE-FIRST workflow
   ```
   
 - In View/Sellers/Index, check link to `Delete` action
+  
+  ``` RAZOR
+  <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+  ```
+  
 - Create delete confirmation view: 
   - View/Sellers/Delete
 - Test App
