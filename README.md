@@ -611,3 +611,71 @@ Note: we're using CODE-FIRST workflow
   
   - Update method calls
     - Swap calls from NotFound() and BadRequest() to the `RedirectToAction(Error)` action.
+
+## App locale, number and date formatting
+  
+- In Program.cs, define localization options
+  
+  ``` C#
+  // Config locale
+  var enUS = new CultureInfo("en-US");
+  var localizationOptions = new RequestLocalizationOptions
+  {
+      DefaultRequestCulture = new RequestCulture(enUS),
+      SupportedCultures = new List<CultureInfo> { enUS },
+      SupportedUICultures = new List<CultureInfo> { enUS }
+  };
+  ```
+  
+- Update Model Seller:
+  - Define custom labels [Display]
+  
+    ``` C#
+    public class Seller
+    {
+      // ...
+      [Display(Name = "E-mail")]
+      public string Email { get; set; }
+
+      [Display(Name = "Birth Date")]
+      public DateTime BirthDate { get; set; }
+
+      [Display(Name = "Base Salary")]
+      public double BaseSalary { get; set; }
+      // ...
+    }
+    ```
+  
+  - Define semantics for date [DataType]
+  
+    ``` C#
+    public class Seller
+    {
+      // ...
+      [Display(Name = "E-mail")]
+      [DataType(DataType.EmailAddress)]
+      public string Email { get; set; }
+
+      [Display(Name = "Birth Date")]
+      [DataType(DataType.Date)]
+      // ...
+    }
+    ```
+  
+  - Define display formats [DisplayFormat]
+  
+    ``` C#
+    public class Seller
+    {
+      // ...
+      [Display(Name = "Birth Date")]
+      [DataType(DataType.Date)]
+      [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+      public DateTime BirthDate { get; set; }
+
+      [Display(Name = "Base Salary")]
+      [DisplayFormat(DataFormatString = "{0:F2}")]
+      public double BaseSalary { get; set; }
+      // ...
+    }
+    ```
