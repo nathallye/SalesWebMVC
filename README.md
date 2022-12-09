@@ -392,7 +392,7 @@ Note: we're using CODE-FIRST workflow
   <a asp-action="Details" asp-route-id="@item.Id">Details</a>
   ```
   
-- In Sellers Controller, create `Details` GET action
+- In `Sellers Controller`, create `Details` GET action
   
   ``` C#
   public IActionResult Details(int? id) 
