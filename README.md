@@ -293,6 +293,25 @@ Note: we're using CODE-FIRST workflow
   ```
   
 - In `Seller Controller`, create `Delete` GET action
+  
+  ``` C#
+  public IActionResult Delete(int? id)
+  {
+      if (id == null)
+      {
+          return NotFound();
+      }
+
+      var obj = _sellerService.FindById(id.Value);
+      if (obj == null) 
+      { 
+          return NotFound();
+      }
+
+      return View(obj);
+  }
+  ```
+  
 - In View/Sellers/Index, check link to `Delete` action
 - Create delete confirmation view: 
   - View/Sellers/Delete
