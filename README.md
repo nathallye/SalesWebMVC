@@ -396,7 +396,21 @@ Note: we're using CODE-FIRST workflow
 - In Seller Controller, create `Details` GET action
   
   ``` C#
-  
+  public IActionResult Details(int? id) 
+  {
+      if (id == null)
+      {
+          return NotFound();
+      }
+
+      var obj = _sellerService.FindById(id.Value);
+      if (obj == null)
+      {
+          return NotFound();
+      }
+
+      return View(obj);
+  }
   ```
   
 - Create view: View/Sellers/Details
