@@ -156,13 +156,13 @@ Note: we're using CODE-FIRST workflow
 - Stop IIS
 - In `Data` folder(same function as Repository folder), create SeedingService(same function as the [ModelName]Repository file)
 - In `Program.cs`, register SeedingService for dependency injection system
-- In `Program.cs`, add SeedingService as parameter of Configure method. Call Seed for development profile
+- In `Program.cs`, add SeedingService as parameter of Configure method. Call Seed for development profile.
 
 ## SellersController
 - Create Departments and Sellers links on navbar (Views/Shared/_Layout.cshtml)
-- Controller -> Add -> Controller -> MVC Controller - Empty -> SellersController
+- `Controller` > `Add` > `Controller` > `MVC Controller - Empty` > `SellersController`
 - Create folder Views/Sellers
-- Views/Sellers -> Add -> View
+- Views/Sellers -> `Add` -> `View`
   - View name: Index
   - Change title
   
@@ -178,7 +178,23 @@ Note: we're using CODE-FIRST workflow
   ```
 
 - In Services/SellerService, implement `FindAll`, returning List<Seller>
+  
+  ``` C#
+  public List<Seller> FindAll()
+  {
+      return _context.Seller.ToList();
+  }
+  ```
+  
 - In Services/SellersController, implement `Index` method, which should call SellerService.FindAll
+  
+  ``` C#
+  public IActionResult Index()
+  {
+      var list = _sellerService.FindAll();
+      return View(list);
+  }
+  ```
 
 - In Views/Sellers/Index, write template code to show Sellers
 
