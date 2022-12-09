@@ -429,12 +429,51 @@ Note: we're using CODE-FIRST workflow
 
 - Create Services/Exceptions folder
 - Create NotFoundException and DbConcurrencyException
-- In SellerService, create Update method
-- In View/Sellers/Index, check link to "Edit" action
-- In controller, create "Edit" GET action
+  
+  ``` C#
+  namespace SalesWebMVC.Services.Exceptions
+  {
+      public class NotFoundException : ApplicationException
+      {
+          public NotFoundException(string message) : base(message)
+          { 
+
+          }
+      }
+  }
+  ```
+  
+  ``` C#
+  
+  ```
+  
+- In `SellerService`, create `Update` method
+  
+  ``` C#
+  
+  ```
+  
+- In View/Sellers/Index, check link to `Edit` action
+  
+  ``` RAZOR
+  
+  ```
+  
+- In `Sellers Controller`, create `Edit` GET action
+  
+  ``` C#
+  
+  ```
+  
 - Create view: View/Sellers/Edit (similar do Create, plus hidden id)
 - Test app
 
-- In controller, create "Edit" POST action
+- In `Sellers Controller`, create `Edit` POST action
+  
+  ``` C#
+  
+  ```
+  
 - Test app
- Notice: ASP.NET Core selects option based on DepartmentId
+  
+- Notice: ASP.NET Core selects option based on `DepartmentId`
