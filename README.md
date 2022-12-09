@@ -343,13 +343,13 @@ Note: we're using CODE-FIRST workflow
   // Action Delete com o método get só para exibirmos a tela confirmação
   public IActionResult Delete(int? id)
   {
-      if (id == null)
+      if (id == null) // testando se o id foi passado
       {
           return NotFound();
       }
 
       var obj = _sellerService.FindById(id.Value);
-      if (obj == null) 
+      if (obj == null) // testando se o id passado existe
       { 
           return NotFound();
       }
@@ -397,13 +397,13 @@ Note: we're using CODE-FIRST workflow
   ``` C#
   public IActionResult Details(int? id) 
   {
-      if (id == null)
+      if (id == null) // testando se o id foi passado
       {
           return NotFound();
       }
 
       var obj = _sellerService.FindById(id.Value);
-      if (obj == null)
+      if (obj == null) // testando se o id passado existe
       {
           return NotFound();
       }
@@ -497,13 +497,13 @@ Note: we're using CODE-FIRST workflow
   ``` C#
   public IActionResult Edit(int? id)
   {
-      if (id == null) // testando se o id existe
+      if (id == null) // testando se o id foi passado
       {
           return NotFound();
       }
 
       var obj = _sellerService.FindById(id.Value);
-      if (obj == null) // testando se o obj existe
+      if (obj == null) // testando se o id passado existe
       {
           return NotFound();
       }
