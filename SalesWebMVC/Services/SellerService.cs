@@ -16,34 +16,36 @@ namespace SalesWebMVC.Services
             _context = context;
         }
 
-        public List<Seller> FindAll()
+        public async Task<List<Seller>> FindAllAsync()
         {
-            return _context.Seller.ToList();
+            return await _context.Seller.ToListAsync();
         }
 
-        public void Insert(Seller obj)
+        // no async ao invés de retornar void retorna Task
+        public async Task InsertAsync(Seller obj)
         {
             /*obj.Department = _context.Department.First();*/
             _context.Add(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public Seller FindById(int id) 
+        public async Task<Seller> FindByIdAsync(int id)
         {
             // return _context.Seller.FirstOrDefault(obj => obj.Id == id);
-            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id); // JOIN com EF
+            return await _context.Seller.Include(obj => obj.Department).FirstOrDefaultAsync(obj => obj.Id == id); // JOIN com EF
         }
 
-        public void Remove(int id) 
+        public async Task RemoveAsync(int id)
         {
             var obj = _context.Seller.Find(id);
             _context.Seller.Remove(obj);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Seller obj)
+        public async Task UpdateAsync(Seller obj)
         {
-            if (!_context.Seller.Any(x => x.Id == obj.Id)) // testando se já existe algum registro dentro da tabela Selller cujo o Id é igual ao Id do obj passado
+            bool hasAny = await _context.Seller.AnyAsync();
+            if (!hasAny) // testando se já existe algum registro dentro da tabela Selller cujo o Id é igual ao Id do obj passado
             {
                 // se não existir (!) será lançada uma exception
                 throw new NotFoundException("Id not found!");
@@ -52,11 +54,11 @@ namespace SalesWebMVC.Services
             {
                 // se passar pelo if quer dizer que já existe esse objeto, então podemos atualizá-lo
                 _context.Update(obj);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
             // catch para capturar uma possível exception de concorrencia no banco de dados.
             // Aqui estamos interceptando uma exceção do nível de acesso a dados...
-            catch (DbConcurrencyException e) 
+            catch (DbConcurrencyException e)
             {
                 throw new DbConcurrencyException(e.Message); // ...e relançando essa exceção, só que usando a exceção em nível de serviço,
                                                              // importante para segregar as camadas, ou seja, a nossa camada de serviço não vai propagar uma exceção de acesso a dados
