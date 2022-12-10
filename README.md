@@ -679,3 +679,83 @@ Note: we're using CODE-FIRST workflow
       // ...
     }
     ```
+  
+## Validation
+  
+- In Seller, add validation annotations
+
+  - `[Required(ErrorMessage = "{0} required")`
+  
+    ``` C#
+    public class Seller
+    {
+      // ...
+      [Required(ErrorMessage = "{0} required")] // {0} pega o nome do atributo
+      [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size should be between {2} e and {1}.")] // {2} pega o MinimumLength, {1} o tamanho máximo determinado 
+      public string Name { get; set; }
+
+      [Required(ErrorMessage = "{0} required")]
+      [Display(Name = "E-mail")]
+      [DataType(DataType.EmailAddress)]
+      public string Email { get; set; }
+
+      [Required(ErrorMessage = "{0} required")]
+      [Display(Name = "Birth Date")]
+      [DataType(DataType.Date)]
+      [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+      public DateTime BirthDate { get; set; }
+
+      [Required(ErrorMessage = "{0} required")]
+      [Display(Name = "Base Salary")]
+      [DisplayFormat(DataFormatString = "{0:F2}")]
+      // ...
+    }
+    ```
+  
+  - `[EmailAddress(ErrorMessage = "Enter a valid email")]`
+    
+    ``` C#
+    public class Seller
+    {
+      // ...
+      [Required(ErrorMessage = "{0} required")]
+      [EmailAddress(ErrorMessage = "Enter a valid email")]
+      [Display(Name = "E-mail")]
+      [DataType(DataType.EmailAddress)]
+      public string Email { get; set; }
+      // ...
+    }
+    ```
+  
+   - `[Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]`
+    
+    ``` C#
+    public class Seller
+    {
+      // ...
+      [Required(ErrorMessage = "{0} required")]
+      [Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]
+      [Display(Name = "Base Salary")]
+      [DisplayFormat(DataFormatString = "{0:F2}")]
+      public double BaseSalary { get; set; }
+      // ...
+    }
+    ```
+  
+ - Update HTML for Create and Edit view
+  
+  - Summary:
+  
+    ``` RAZOR
+    <div asp-validation-summary="All" class="text-danger"></div>
+    ```
+  
+    - Client-side validation(paste code snippet at end of view):
+  
+    ``` RAZOR
+    @section Scripts {
+      @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+    ```
+  
+ - Update SellersController
