@@ -906,4 +906,70 @@ Note: we're using CODE-FIRST workflow
   </li>
   ```
   
- 
+## Implementing simple search
+  
+- Create SalesRecordService with FindByDate operation
+  
+  ``` C#
+  namespace SalesWebMVC.Services
+  {
+      public class SalesRecordService
+      {
+          private readonly SalesWebMVCContext _context;
+
+          public SalesRecordService(SalesWebMVCContext context)
+          {
+              _context = context;
+          }
+
+          public async Task<List<SalesRecord>> FindByDateAsync(DateTime? minDate, DateTime? maxDate)
+          {
+              var result = from obj in _context.SalesRecord select obj; // essa declaração vai pegar esse SalesRecord que é do tipo DbSet,
+                                                                        // e vai construir um obj result do tipo IQueryable
+                                                                        // e "em cima" desse obj result vamos poder acrescentar detalhes da consulta
+              if (minDate.HasValue) // se a data mínima existir(foi passada) 
+              {
+                  result = result.Where(x => x.Date >= minDate.Value); // restrição de data mínima
+              }
+              if (maxDate.HasValue) // se a data máxima existir(foi passada)
+              {
+                  result = result.Where(x => x.Date <= maxDate.Value); // restrição de data máxima
+              }
+              return await result
+                  .Include(x => x.Seller) // join com a tabela Seller
+                  .Include(x => x.Seller.Department) // join com a tabela Department
+                  .OrderByDescending(x => x.Date)
+                  .ToListAsync();
+          }
+      }
+  }
+  ```
+  
+- In Prohram.cs, register SalesRecordService to dependency injection system
+  
+  ``` C#
+  builder.Services.AddScoped<SalesRecordService, SalesRecordService>();
+  ```
+  
+- In SalesRecordsController, update SimpleSearch action
+  
+  ``` C#
+  public async Task<IActionResult> SimpleSearch(DateTime? minDate, DateTime? maxDate)
+  {
+      if (!minDate.HasValue) // testa se a data mínima existe, se não foi 
+      {
+          minDate = new DateTime(DateTime.Now.Year, 1, 1); // será enviada uma data padrão (ano atual, mês 1, dia 1)
+      }
+      if (!maxDate.HasValue) // testa se a data máxima existe, se não foi
+      {
+          maxDate = DateTime.Now; // será enviada uma data padrão(data atual)
+      }
+      ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd"); // envia a data mínima formatada para a View 
+      ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd"); // envia a data máxima formatada para a View 
+
+      var result = await _salesRecordService.FindByDateAsync(minDate, maxDate);
+      return View(result);
+  }
+  ```
+  
+- Update SimpleSearch view
