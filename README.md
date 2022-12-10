@@ -813,3 +813,56 @@ Note: we're using CODE-FIRST workflow
   
 - Update SellerService
 - Update SellersController
+  
+## Exception handling for delete (referential integrity)
+  
+- Create custom exception IntegrityException
+  
+  ``` C#
+  namespace SalesWebMVC.Services.Exceptions
+  {
+      public class IntegrityException : ApplicationException
+      {
+          public IntegrityException(string message) : base(message) 
+          { 
+          }
+      }
+  }
+  ```
+  
+- In SellerService in RemoveAsync action, catch DbUpdateException and throw IntegrityException
+  
+  ``` C#
+  public async Task RemoveAsync(int id)
+  {
+      try
+      {
+          var obj = _context.Seller.Find(id);
+          _context.Seller.Remove(obj);
+          await _context.SaveChangesAsync();
+      }
+      catch(DbUpdateException e) 
+      {
+          throw new IntegrityException(e.Message);
+      }
+  }
+  ```
+  
+- In SellersController, update Delete POST action
+  
+  ``` C#
+  [HttpPost]
+  [ValidateAntiForgeryToken]
+  public async Task<IActionResult> Delete(int id)
+  {
+      try
+      {
+          await _sellerService.RemoveAsync(id);
+          return RedirectToAction(nameof(Index));
+      }
+      catch (IntegrityException e)
+      {
+          return RedirectToAction(nameof(Error), new { message = e.Message });
+      }
+  }
+  ```
