@@ -902,7 +902,7 @@ Note: we're using CODE-FIRST workflow
   
   ``` RAZOR
   <li class="nav-item">
-      <a class="nav-link text-white" asp-area="" asp-controller="SelesRecords" asp-action="Index">Sellers</a>
+      <a class="nav-link text-white" asp-area="" asp-controller="SalesRecords" asp-action="Index">Sales</a>
   </li>
   ```
   
