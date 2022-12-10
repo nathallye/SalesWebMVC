@@ -773,7 +773,9 @@ Note: we're using CODE-FIRST workflow
   {
       if (!ModelState.IsValid)
       {
-          return View(seller); // vai ficar retornando para a view com os dados que já foram preenchidos, até que todos estejam válidos
+          var departments = _departmentService.FindAll();
+          var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
+          return View(viewModel); // vai ficar retornando para a view com os dados que já foram preenchidos, até que todos estejam válidos
       }
 
       _sellerService.Insert(seller);
