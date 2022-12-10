@@ -44,12 +44,12 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken] // evitar ataques do tipo xsrf
         public async Task<IActionResult> Create(Seller seller)
         {
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 var departments = await _departmentService.FindAllAsync();
                 var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(viewModel); // vai ficar retornando para a view com os dados que já foram preenchidos, até que todos estejam válidos
-            }
+            }*/
 
             await _sellerService.InsertAsync(seller);
             return RedirectToAction(nameof(Index)); // nameof - para previnir caso essa view tenha o nome trocado não quebre o código
@@ -121,12 +121,12 @@ namespace SalesWebMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Seller seller)
         {
-            if (!ModelState.IsValid)
+            /*if (!ModelState.IsValid)
             {
                 var departments = await _departmentService.FindAllAsync();
                 var viewModel = new SellerFormViewModel { Seller = seller, Departments = departments };
                 return View(viewModel); // vai ficar retornando para a view com os dados que já foram preenchidos, até que todos estejam válidos
-            }
+            }*/
 
             if (id != seller.Id) // se o id passado como parâmetro para action for diferente do Id do seller
             {
