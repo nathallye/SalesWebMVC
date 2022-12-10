@@ -727,7 +727,7 @@ Note: we're using CODE-FIRST workflow
     }
     ```
   
-   - `[Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]`
+  - `[Range(100.0, 50000.0, ErrorMessage = "{0} must be from {1} to {2}")]`
     
     ``` C#
     public class Seller
@@ -742,20 +742,41 @@ Note: we're using CODE-FIRST workflow
     }
     ```
   
- - Update HTML for Create and Edit view
-  
+- Update HTML for Create and Edit view
+
   - Summary:
-  
+
     ``` RAZOR
     <div asp-validation-summary="All" class="text-danger"></div>
     ```
+
+  - Client-side validation(paste code snippet at end of view):
+
+  ``` RAZOR
+  @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+  }
+  ```
   
-    - Client-side validation(paste code snippet at end of view):
-  
+  - Field:
+    
     ``` RAZOR
-    @section Scripts {
-      @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
+    <span asp-validation-for="Name" class="text-danger"></span>
     ```
   
- - Update SellersController
+ - Update SellersController in Create and Edit actions (to prevent empty form submission when browser javascript is disabled)
+  
+  ``` C#
+  [HttpPost]
+  [ValidateAntiForgeryToken] // evitar ataques do tipo xsrf
+  public IActionResult Create(Seller seller)
+  {
+      if (!ModelState.IsValid)
+      {
+          return View(seller); // vai ficar retornando para a view com os dados que já foram preenchidos, até que todos estejam válidos
+      }
+
+      _sellerService.Insert(seller);
+      return RedirectToAction(nameof(Index)); // nameof - para previnir caso essa view tenha o nome trocado não quebre o código
+  }
+  ```
