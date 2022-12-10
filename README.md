@@ -866,3 +866,44 @@ Note: we're using CODE-FIRST workflow
       }
   }
   ```
+
+## Preparing sales search navigation views
+  
+- Create SalesRecordsController with Index, SimpleSearch and GroupingSearch action
+  
+  ``` C#
+  namespace SalesWebMVC.Controllers
+  {
+      public class SalesRecordsController : Controller
+      {
+          public IActionResult Index()
+          {
+              return View();
+          }
+
+          public IActionResult SimpleSearch()
+          { 
+              return View();
+          }
+
+          public IActionResult GroupingSearch()
+          {
+              return View();
+          }
+      }
+  }
+  ```
+  
+ - Create folder Views/SalesRecords
+   - Create Index view with search forms
+   - Create SimpleSearch and GroupingSearch views
+  
+ - Create "Sales" link on main navbar(Views/Shared/_Layout.cshtml)
+  
+  ``` RAZOR
+  <li class="nav-item">
+      <a class="nav-link text-white" asp-area="" asp-controller="SelesRecords" asp-action="Index">Sellers</a>
+  </li>
+  ```
+  
+ 
