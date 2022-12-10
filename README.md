@@ -782,3 +782,34 @@ Note: we're using CODE-FIRST workflow
       return RedirectToAction(nameof(Index)); // nameof - para previnir caso essa view tenha o nome trocado não quebre o código
   }
   ```
+  
+## Asynchronous operations using Tasks (async, await)
+
+- Update DepartmentService
+  
+  ``` C#
+  public class DepartmentService
+  {
+      private readonly SalesWebMVCContext _context;
+
+      public DepartmentService(SalesWebMVCContext context)
+      {
+          _context = context;
+      }
+
+      // sync
+      /*public List<Department> FindAll()
+      {
+          return _context.Department.OrderBy(x => x.Name).ToList();
+      }*/
+
+      // async
+      public async Task<List<Department>> FindAllAsync()
+      {
+          return await _context.Department.OrderBy(x => x.Name).ToListAsync();
+      }
+  }
+  ```
+  
+- Update SellerService
+- Update SellersController
