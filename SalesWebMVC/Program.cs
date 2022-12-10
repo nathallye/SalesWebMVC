@@ -13,6 +13,7 @@ builder.Services.AddDbContext<SalesWebMVCContext>(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<DepartmentService, DepartmentService>();
 builder.Services.AddScoped<SellerService, SellerService>();
+builder.Services.AddScoped<SalesRecordService, SalesRecordService>();
 
 var app = builder.Build();
 
