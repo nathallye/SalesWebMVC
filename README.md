@@ -750,7 +750,7 @@ Note: we're using CODE-FIRST workflow
     <div asp-validation-summary="All" class="text-danger"></div>
     ```
 
-  - Client-side validation(paste code snippet at end of view):
+  - Client-side validation. To work validation even when javascript is disabled, the framework does this work(paste code snippet at end of view):
 
   ``` RAZOR
   @section Scripts {
