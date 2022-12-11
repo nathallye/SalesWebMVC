@@ -964,6 +964,7 @@ Note: we're using CODE-FIRST workflow
       {
           maxDate = DateTime.Now; // será enviada uma data padrão(data atual)
       }
+  
       ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd"); // envia a data mínima formatada para a View 
       ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd"); // envia a data máxima formatada para a View 
 
@@ -973,3 +974,52 @@ Note: we're using CODE-FIRST workflow
   ```
   
 - Update SimpleSearch view
+  
+## Implementing grouping search
+  
+- In SalesRecordService create FindByDateGrouping operation
+  
+  ``` C#
+  public async Task<List<IGrouping<Department, SalesRecord>>> FindByDateGroupingAsync(DateTime? minDate, DateTime? maxDate)
+  {
+      var result = from obj in _context.SalesRecord select obj;
+      if (minDate.HasValue)
+      {
+          result = result.Where(x => x.Date >= minDate.Value);
+      }
+      if (maxDate.HasValue)
+      {
+          result = result.Where(x => x.Date <= maxDate.Value);
+      }
+      return await result
+          .Include(x => x.Seller)
+          .Include(x => x.Seller.Department)
+          .OrderByDescending(x => x.Date)
+          .GroupBy(x => x.Seller.Department)
+          .ToListAsync();
+  }
+  ```
+  
+- In SalesRecordsController, update GroupingSearch action
+  
+  ``` C#
+  public async Task<IActionResult> GroupingSearch(DateTime? minDate, DateTime? maxDate)
+  {
+      if (!minDate.HasValue)
+      {
+          minDate = new DateTime(DateTime.Now.Year, 1, 1);
+      }
+      if (!maxDate.HasValue)
+      {
+          maxDate = DateTime.Now;
+      }
+
+      ViewData["minDate"] = minDate.Value.ToString("yyyy-MM-dd");
+      ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
+
+      var result = await _salesRecordService.FindByDateGroupingAsync(minDate, maxDate);
+      return View(result);
+  }
+  ```
+  
+- Update GroupingSearch view
