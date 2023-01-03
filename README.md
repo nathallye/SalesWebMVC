@@ -2,7 +2,7 @@
 Building a sales system using ASP.NET Core Web App.
 
 <div align="center">
-  <img width=800" src="https://user-images.githubusercontent.com/86172286/206882439-0b68ea2d-0f54-4232-ab98-0fa571c084f7.gif">
+  <img width="800" src="https://user-images.githubusercontent.com/86172286/206882439-0b68ea2d-0f54-4232-ab98-0fa571c084f7.gif">
 </div>
                                                                                                                              
 ## Shortcuts in Visual Studio
